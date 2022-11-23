@@ -3,6 +3,7 @@ import json
 import requests
 
 HTTP_PREFIX = "http://"
+HOST = "192.168.1.51:80/internal/downloadFile"
 
 
 class DownloadFileFromAgentInputType(BaseModel):
