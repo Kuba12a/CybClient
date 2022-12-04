@@ -21,8 +21,7 @@ def download_file_from_agent(input: DownloadFileFromAgentInputType):
 
     response = requests.post(url=HTTP_PREFIX+HOST+"/downloadFile", data=data)
 
-    status_code = response.status_code
-    return status_code
+    return response.json()
 
 
 def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
@@ -31,5 +30,4 @@ def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
 
     response = requests.post(url=HTTP_PREFIX+HOST+"/generateAgentCode", data=data)
 
-    status_code = response.status_code
-    return status_code
+    return response.json()
