@@ -21,7 +21,7 @@ def download_file_from_agent(input: DownloadFileFromAgentInputType):
     data = json.dumps(input.__dict__)
     url = HTTP_PREFIX + HOST + "/downloadFile"
 
-    request = urllib.request.Request(url, method='POST', data=data)
+    request = urllib.request.Request(url, method='POST', data=urllib.parse.urlencode(data).encode())
     response = urllib.request.urlopen(request)
 
     response_data = response.read()
@@ -34,7 +34,7 @@ def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
     data = json.dumps(input.__dict__)
     url = HTTP_PREFIX + HOST + "/generateAgentCode"
 
-    request = urllib.request.Request(url, method='POST', data=data)
+    request = urllib.request.Request(url, method='POST',  data=urllib.parse.urlencode(data).encode())
     response = urllib.request.urlopen(request)
 
     response_data = response.read()
