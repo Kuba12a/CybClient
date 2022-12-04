@@ -30,4 +30,4 @@ def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
 
     response = requests.post(url=HTTP_PREFIX+HOST+"/generateAgentCode", data=data)
 
-    return response.json()
+    return response.json()['code']
