@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 import json
-import urllib.request
-import urllib.parse
+import requests
 
 HTTP_PREFIX = "http://"
 HOST = "192.168.1.51:80/internal"
@@ -18,25 +17,19 @@ class GenerateFirstCodeForAgentInputType(BaseModel):
 
 def download_file_from_agent(input: DownloadFileFromAgentInputType):
 
-    data = input.__dict__
-    url = HTTP_PREFIX + HOST + "/downloadFile"
+    data = json.dumps(input.__dict__)
 
-    request = urllib.request.Request(url, method='POST', data=urllib.parse.urlencode(data).encode())
-    response = urllib.request.urlopen(request)
+    response = requests.post(url=HTTP_PREFIX+HOST+"/downloadFile", data=data)
 
-    response_data = response.read()
-
-    return response_data
+    status_code = response.status_code
+    return status_code
 
 
 def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
 
-    data = input.__dict__
-    url = HTTP_PREFIX + HOST + "/generateAgentCode"
+    data = json.dumps(input.__dict__)
 
-    request = urllib.request.Request(url, method='POST',  data=urllib.parse.urlencode(data).encode())
-    response = urllib.request.urlopen(request)
+    response = requests.post(url=HTTP_PREFIX+HOST+"/generateAgentCode", data=data)
 
-    response_data = response.read()
-
-    return response_data
+    status_code = response.status_code
+    return status_code
