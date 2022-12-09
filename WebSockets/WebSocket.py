@@ -7,7 +7,6 @@ async def handler(websocket, path):
     data = await websocket.recv()
     reply = f"Data recieved as:  {data}!"
     print(data)
-    await websocket.send(reply)
 
 
 def between_callback():
