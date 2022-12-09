@@ -11,6 +11,11 @@ class DownloadFileFromAgentInputType(BaseModel):
     file_path: str
 
 
+class ListFilesFromAgentInputType(BaseModel):
+    ip_address: str
+    dir_path: str
+
+
 class GenerateFirstCodeForAgentInputType(BaseModel):
     ip_address: str
 
@@ -20,6 +25,15 @@ def download_file_from_agent(input: DownloadFileFromAgentInputType):
     data = json.dumps(input.__dict__)
 
     response = requests.post(url=HTTP_PREFIX+HOST+"/downloadFile", data=data)
+
+    return response.json()
+
+
+def list_files_from_agent(input: ListFilesFromAgentInputType):
+
+    data = json.dumps(input.__dict__)
+
+    response = requests.post(url=HTTP_PREFIX+HOST+"/listFiles", data=data)
 
     return response.json()
 

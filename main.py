@@ -14,4 +14,8 @@ if __name__ == '__main__':
     #time.sleep(200)
     cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(ip_address='192.168.1.50',
                                                                                               file_path='/etc/passwd'))
-    time.sleep(200)
+    time.sleep(20)
+
+    cybServerGateway.list_files_from_agent(cybServerGateway.ListFilesFromAgentInputType(ip_address='192.168.1.50',
+                                                                                              dir_path='/etc'))
+    time.sleep(20)
