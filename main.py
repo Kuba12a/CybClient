@@ -1,8 +1,5 @@
-import asyncio
 import threading
-import time
-
-import Gateways.CybServerGateway as cybServerGateway
+import Console
 import WebSockets.WebSocket as webSocket
 
 if __name__ == '__main__':
@@ -11,11 +8,12 @@ if __name__ == '__main__':
     server = threading.Thread(target=webSocket.between_callback, daemon=True)
     server.start()
 
+    Console.menu()
     #time.sleep(200)
-    cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(ip_address='192.168.1.50',
-                                                                                              file_path='/etc/passwd'))
-    time.sleep(20)
+    #cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(ip_address='192.168.1.50',
+    #                                                                                          file_path='/etc/passwd'))
+    #time.sleep(20)
 
-    cybServerGateway.list_files_from_agent(cybServerGateway.ListFilesFromAgentInputType(ip_address='192.168.1.50',
-                                                                                              dir_path='/etc'))
-    time.sleep(20)
+    #cybServerGateway.list_files_from_agent(cybServerGateway.ListFilesFromAgentInputType(ip_address='192.168.1.50',
+    #                                                                                          dir_path='/etc'))
+    #time.sleep(20)
