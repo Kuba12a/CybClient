@@ -37,7 +37,7 @@ def generate_code_for_agent():
     code = cybServerGateway.generate_first_code_for_agent(cybServerGateway.GenerateFirstCodeForAgentInputType(
         ip_address=ip_address, file_path=file_path))
     console.print('Code generated successfully')
-    console.print(code)
+    print(code)
     menu()
 
 
