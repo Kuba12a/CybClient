@@ -1,6 +1,7 @@
 from rich.console import Console
 from rich.table import Table
 from rich.theme import Theme
+from rich.prompt import Prompt
 
 import Gateways.CybServerGateway as cybServerGateway
 
@@ -27,7 +28,7 @@ def menu():
         i = i + 1
 
     console.print(table)
-    value = input('>')
+    value = Prompt.ask(">")
     if value == '1':
         generate_code_for_agent()
     if value == '2':
