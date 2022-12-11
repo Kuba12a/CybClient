@@ -34,6 +34,8 @@ def menu():
         download_file_from_agent()
     if value == '3':
         list_agent_files()
+    if value == '4':
+        list_agents()
     else:
         menu()
 
@@ -63,4 +65,22 @@ def list_agent_files():
     dir_path = input()
     cybServerGateway.list_files_from_agent(cybServerGateway.ListFilesFromAgentInputType(
         ip_address=ip_address, dir_path=dir_path))
+    menu()
+
+
+def list_agents():
+    table = Table()
+    agents = cybServerGateway.list_agents()
+    table.add_column("S. No.", style="cyan", no_wrap=True)
+    headers = agents[0].keys()
+    for header in headers:
+        table.add_column(header, style="magenta")
+
+    i = 1
+    for agent in agents:
+        table.add_row(str(i), *agent)
+        i = i + 1
+
+    console.print(table)
+
     menu()
