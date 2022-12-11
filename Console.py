@@ -77,6 +77,7 @@ def list_agents():
         table.add_column(header, style="magenta")
 
     for agent in agents:
-        table.add_row(agent['id'], agent['ip_address'], agent['created_at'], agent['encryption_key'], agent['status'])
+        table.add_row(str(agent['id']), agent['ip_address'], str(agent['created_at']), agent['encryption_key'],
+                      str(agent['status']))
 
     console.print(table)
