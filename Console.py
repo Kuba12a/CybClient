@@ -77,7 +77,7 @@ def list_agents():
         table.add_column(header, style="magenta")
 
     i = 1
-    for agent in agents:
+    for agent in zip(*agents):
         table.add_row(str(i), *agent)
         i = i + 1
 
