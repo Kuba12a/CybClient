@@ -71,7 +71,6 @@ def list_agent_files():
 def list_agents():
     table = Table()
     agents = cybServerGateway.list_agents()
-    table.add_column("S. No.", style="cyan", no_wrap=True)
     headers = agents[0].keys()
     for header in headers:
         table.add_column(header, style="magenta")
