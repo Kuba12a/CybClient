@@ -62,3 +62,13 @@ def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
         print(response.json()['code'])
 
     return response.json()['code']
+
+
+def list_agents():
+
+    response = requests.get(url=HTTP_PREFIX+HOST+"/agents")
+
+    if response.status_code == 200:
+        return response.json()['agents']
+
+    return None
