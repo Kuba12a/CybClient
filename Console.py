@@ -28,7 +28,7 @@ def menu():
         i = i + 1
 
     console.print(table)
-    value = Prompt.ask(">")
+    value = input('>')
     if value == '1':
         generate_code_for_agent()
     if value == '2':
