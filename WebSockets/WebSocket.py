@@ -1,12 +1,11 @@
 import asyncio
-
 import websockets
+import Console
 
 
 async def handler(websocket, path):
     data = await websocket.recv()
-    reply = f"Data recieved as:  {data}!"
-    print(data)
+    Console.console.print(data)
 
 
 def between_callback():

