@@ -6,7 +6,7 @@ import Console
 async def handler(websocket, path):
     data = await websocket.recv()
     Console.console.print('\n'+data)
-    Console.console.print('>')
+    Console.console.print('\r>')
 
 
 def between_callback():
