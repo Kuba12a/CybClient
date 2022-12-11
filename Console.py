@@ -76,11 +76,7 @@ def list_agents():
     for header in headers:
         table.add_column(header, style="magenta")
 
-    i = 1
-    for agent in zip(*agents):
-        table.add_row(str(i), *agent)
-        i = i + 1
+    for agent in agents:
+        table.add_row(agent['id'], agent['ip_address'], agent['created_at'], agent['encryption_key'], agent['status'])
 
     console.print(table)
-
-    menu()
