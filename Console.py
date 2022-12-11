@@ -80,3 +80,4 @@ def list_agents():
                       str(agent['status']))
 
     console.print(table)
+    menu()
