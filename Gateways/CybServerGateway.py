@@ -19,7 +19,7 @@ class ListFilesFromAgentInputType(BaseModel):
 
 class MonitorClipboardOnAgentInputType(BaseModel):
     ip_address: str
-    dir_path: int
+    duration: int
 
 
 class GenerateFirstCodeForAgentInputType(BaseModel):
