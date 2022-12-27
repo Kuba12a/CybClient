@@ -17,6 +17,11 @@ class ListFilesFromAgentInputType(BaseModel):
     dir_path: str
 
 
+class MonitorClipboardOnAgentInputType(BaseModel):
+    ip_address: str
+    dir_path: int
+
+
 class GenerateFirstCodeForAgentInputType(BaseModel):
     ip_address: str
 
@@ -48,6 +53,23 @@ def list_files_from_agent(input: ListFilesFromAgentInputType):
         Console.console.print(response.json()['detail'], style="error")
     else:
         Console.console.print(f'Task for listing files from an agent scheduled successfully with id:'
+                              f' {response.json()["command_id"]}',
+                              style="success")
+
+    return response.json()
+
+
+def monitor_clipboard_on_agent(input: MonitorClipboardOnAgentInputType):
+
+    data = json.dumps(input.__dict__)
+
+    response = requests.post(url=HTTP_PREFIX+HOST+"/monitorClipboard", data=data)
+
+    if response.status_code != 200:
+        Console.console.print(f"Could not schedule monitoring clipboard on agent {input.ip_address}", style="error")
+        Console.console.print(response.json()['detail'], style="error")
+    else:
+        Console.console.print(f'Task for monitoring clipboard on agent scheduled successfully with id:'
                               f' {response.json()["command_id"]}',
                               style="success")
 
