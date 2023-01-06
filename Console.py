@@ -65,13 +65,16 @@ def download_file_from_agent():
     console.print("Insert agent's file path", style="info")
     file_path = input('>')
 
-    console.print(f"You are about to schedule task for downloading file {file_path} on agent {ip_address}. Proceed?(y/n)")
+    console.print(f"You are about to schedule task for downloading file {file_path} on agent {ip_address}."
+                  f" Proceed?(y/n)", style="info")
 
     proc = input('>')
 
     if proc == 'y':
         cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(
             ip_address=ip_address, file_path=file_path))
+    else:
+        console.print("Operation cancelled", style="info")
 
     menu()
 
