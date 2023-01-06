@@ -84,7 +84,6 @@ def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
 
     if response.status_code == 200:
         Console.console.print('Code generated successfully', style="success")
-        print(response.json()['code'])
 
     return response.json()['code']
 
