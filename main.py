@@ -8,7 +8,7 @@ if __name__ == '__main__':
     server = threading.Thread(target=webSocket.between_callback, daemon=True)
     server.start()
 
-    Console.welcome_message()
+    Console.options()
     Console.menu()
     #time.sleep(200)
     #cybServerGateway.download_file_from_agent(cybServerGateway.DownloadFileFromAgentInputType(ip_address='192.168.1.50',
