@@ -39,6 +39,8 @@ def menu():
         monitor_agent_clipboard()
     if value == '5':
         list_agents()
+    if value == 'options':
+        console.print(table)
     else:
         menu()
 
@@ -79,7 +81,6 @@ def monitor_agent_clipboard():
     cybServerGateway.monitor_clipboard_on_agent(cybServerGateway.MonitorClipboardOnAgentInputType(
         ip_address=ip_address, duration=duration))
     menu()
-
 
 
 def list_agents():
