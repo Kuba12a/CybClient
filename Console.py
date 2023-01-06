@@ -108,13 +108,18 @@ def monitor_agent_clipboard():
 def list_agents():
     table = Table()
     agents = cybServerGateway.list_agents()
-    headers = agents[0].keys()
-    for header in headers:
-        table.add_column(header, style="magenta")
+    if len(agents) > 0:
+        headers = agents[0].keys()
+        for header in headers:
+            table.add_column(header, style="magenta")
 
-    for agent in agents:
-        table.add_row(str(agent['id']), agent['ip_address'], str(agent['created_at']), agent['encryption_key'],
-                      str(agent['status']))
+        for agent in agents:
+            table.add_row(str(agent['id']), agent['ip_address'], str(agent['created_at']), agent['encryption_key'],
+                            str(agent['status']))
 
-    console.print(table)
-    menu()
+        console.print(table)
+        menu()
+
+    else:
+        console.print("There are no agents added to the system", style="info")
+        menu()
