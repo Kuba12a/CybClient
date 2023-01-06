@@ -26,6 +26,10 @@ class GenerateFirstCodeForAgentInputType(BaseModel):
     ip_address: str
 
 
+class DisconnectAgentInputType(BaseModel):
+    ip_address: str
+
+
 def download_file_from_agent(input: DownloadFileFromAgentInputType):
 
     data = json.dumps(input.__dict__)
@@ -86,6 +90,23 @@ def generate_first_code_for_agent(input: GenerateFirstCodeForAgentInputType):
         Console.console.print('Code generated successfully', style="success")
 
     return response.json()['code']
+
+
+def disconnect_agent(input: DisconnectAgentInputType):
+
+    data = json.dumps(input.__dict__)
+
+    response = requests.post(url=HTTP_PREFIX+HOST+"/disconnectAgent", data=data)
+
+    if response.status_code != 200:
+        Console.console.print(f"Could not schedule disconnecting agent {input.ip_address}", style="error")
+        Console.console.print(response.json()['detail'], style="error")
+    else:
+        Console.console.print(f'Task for disconnecting agent scheduled successfully with id:'
+                              f' {response.json()["command_id"]}',
+                              style="success")
+
+    return response.json()
 
 
 def list_agents():

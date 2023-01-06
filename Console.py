@@ -44,6 +44,8 @@ def menu():
         monitor_agent_clipboard()
     if value == '5':
         list_agents()
+    if value == '6':
+        disconnect_agent()
     if value == 'options':
         options()
     else:
@@ -102,6 +104,15 @@ def monitor_agent_clipboard():
 
     cybServerGateway.monitor_clipboard_on_agent(cybServerGateway.MonitorClipboardOnAgentInputType(
         ip_address=ip_address, duration=duration))
+    menu()
+
+
+def disconnect_agent():
+    console.print("Insert agent's ip address", style="info")
+    ip_address = input('>')
+
+    cybServerGateway.disconnect_agent(cybServerGateway.DisconnectAgentInputType(
+        ip_address=ip_address))
     menu()
 
 
