@@ -5,7 +5,7 @@ import Console
 import config
 
 HTTP_PREFIX = "http://"
-HOST = config.server_ip
+HOST = config.server_address + "/internal"
 
 
 class DownloadFileFromAgentInputType(BaseModel):
