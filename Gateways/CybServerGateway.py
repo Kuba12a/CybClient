@@ -2,9 +2,10 @@ from pydantic import BaseModel
 import json
 import requests
 import Console
+import config
 
 HTTP_PREFIX = "http://"
-HOST = "192.168.1.51:80/internal"
+HOST = config.server_ip
 
 
 class DownloadFileFromAgentInputType(BaseModel):
