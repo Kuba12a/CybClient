@@ -126,7 +126,7 @@ def list_agents():
 
         for agent in agents:
             table.add_row(str(agent['id']), agent['ip_address'], str(agent['created_at']), agent['encryption_key'],
-                            str(agent['status']))
+                            agent['cookie'], str(agent['status']))
 
         console.print(table)
         menu()
